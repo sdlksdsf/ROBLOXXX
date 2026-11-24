@@ -1,0 +1,59 @@
+{
+  "name": "ROBLOXXX",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Shared": {
+        "$path": "src/shared"
+      }
+    },
+    "ServerScriptService": {
+      "Server": {
+        "$path": "src/server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Client": {
+          "$path": "src/client"
+        }
+      }
+    },
+    "Workspace": {
+      "Baseplate": {
+        "$className": "Part",
+        "$properties": {
+          "Name": "Baseplate",
+          "Anchored": true,
+          "Size": [512, 20, 512],
+          "Position": [0, -10, 0]
+        }
+      },
+      "SpawnLocation": {
+        "$className": "SpawnLocation",
+        "$properties": {
+          "Name": "SpawnLocation",
+          "Anchored": true,
+          "Size": [12, 1, 12],
+          "Position": [0, 0.5, 0],
+          "Neutral": true
+        }
+      },
+      "ClickPad": {
+        "$className": "Part",
+        "$properties": {
+          "Name": "ClickPad",
+          "Anchored": true,
+          "Size": [8, 1, 8],
+          "Position": [14, 0.5, 0]
+        }
+      }
+    },
+    "Lighting": {
+      "$properties": {
+        "ClockTime": 14,
+        "Brightness": 2
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Ignore build artifacts (generated locally with Rojo)
+build/
+*.rbxlx
+*.rbxlx.lock
+*.rbxl.lock
+.DS_Store
