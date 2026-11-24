@@ -147,6 +147,27 @@ a bonus power-tool on your machine.
 
 ---
 
+## Path D — LIVE connection: AI drives your Studio directly 🎯
+
+Built on a **Supabase relay table** — the one channel that works from a cloud
+agent to your localhost-only Studio MCP (outbound-only from your PC: **no
+ports, no tunnels, no exposure**).
+
+```
+AI agent  →  Supabase (your voxbridge project)  ←outbound HTTPS poll—  bridge/relay.js on your PC  →  official mcp.bat
+```
+
+Setup lives in [bridge/README.md](bridge/README.md) — in short:
+
+1. Get Node.js 18+ from https://nodejs.org (LTS button) — install with defaults
+2. Get the repo files (git clone, or ZIP download)
+3. `cd bridge` → copy `.env.example` to `.env` → paste the 3 values the AI gave you
+4. `node relay.js --selftest` → `node relay.js --diagnose` → `node relay.js`
+5. Keep that window open while working with the AI — every command it sends
+   prints there so you always see what happens in your Studio
+
+---
+
 ## 🔒 Security — my promises to you
 
 - **I will never ask** for your password, Roblox credentials, tokens, or 2FA codes. Ever.

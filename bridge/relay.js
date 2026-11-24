@@ -237,15 +237,22 @@ class RelayStore {
   }
 
   async req(method, search, body) {
-    const res = await fetch(this.cfg.url + "/rest/v1/studio_commands" + search, {
-      method,
-      headers: {
+    const doFetch = async (withAuth) => {
+      const headers = {
         apikey: this.cfg.key,
-        Authorization: "Bearer " + this.cfg.key,
         "Content-Type": "application/json",
-      },
-      body: body === undefined ? undefined : JSON.stringify(body),
-    });
+      };
+      // New publishable keys may be accepted in either header style;
+      // we try both and fall back automatically on 401.
+      if (withAuth) headers.Authorization = "Bearer " + this.cfg.key;
+      return fetch(this.cfg.url + "/rest/v1/studio_commands" + search, {
+        method,
+        headers,
+        body: body === undefined ? undefined : JSON.stringify(body),
+      });
+    };
+    let res = await doFetch(true);
+    if (res.status === 401) res = await doFetch(false);
     if (!res.ok) {
       let detail = "";
       try {
