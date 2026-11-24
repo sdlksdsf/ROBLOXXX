@@ -34,7 +34,9 @@ const { spawn } = require("child_process");
 function loadEnvFile() {
   const envPath = path.join(__dirname, ".env");
   if (!fs.existsSync(envPath)) return;
-  for (const line of fs.readFileSync(envPath, "utf8").split(/\r?\n/)) {
+  // Strip a possible BOM (some Windows editors add one) before parsing.
+  const raw = fs.readFileSync(envPath, "utf8").replace(/^\uFEFF/, "");
+  for (const line of raw.split(/\r?\n/)) {
     if (!line.trim() || line.trim().startsWith("#")) continue;
     const m = line.match(/^\s*([A-Za-z0-9_]+)\s*=\s*(.*)$/);
     if (m && process.env[m[1]] === undefined) {
