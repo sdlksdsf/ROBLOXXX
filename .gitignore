@@ -4,3 +4,4 @@ build/
 *.rbxlx.lock
 *.rbxl.lock
 .DS_Store
+bridge/.env
